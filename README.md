@@ -70,16 +70,7 @@ Display with 2 decimal places.
                 return 'F';
         }
     }
-```
-
-
-### 3.3 Overall System Quality
-
-Calculate weighted average across all subjects:
-```
-Overall Average = Sum of (subject average × teacher count) / Total teachers
-```
-
+``` 
 ---
 
 ## 4. Output Report
@@ -95,8 +86,7 @@ Subject          # Teachers    Avg Quality    Grade
 ---------------------------------------------------
 [Subject Name]   [Count]       [XX.XX]        [A-F]
 [Subject Name]   [Count]       [XX.XX]        [A-F]
-
-Overall System Quality: XX.XX (Grade: X)
+ 
 ```
 
 ### 4.2 Report Contents
@@ -104,8 +94,7 @@ Overall System Quality: XX.XX (Grade: X)
 - Subject name
 - Number of teachers
 - Average quality score (2 decimals)
-- Letter grade (A/B/C/D/F)
-- Overall system average and grade
+- Letter grade (A/B/C/D/F) 
 
 ---
 
@@ -222,13 +211,12 @@ public class Subject {
 
 ### Feature 3: Calculate Statistics
 - Calculate average rating per subject
-- Assign grade based on average
-- Calculate overall system quality
+- Assign grade based on average 
 
 ### Feature 4: Generate Quality Report
 - Display formatted table
 - Show all subjects with statistics
-- Display overall system quality and grade
+- Display grade
 
 ### Feature 5: Input Validation
 - Reject ratings outside 0-100

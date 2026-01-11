@@ -128,17 +128,7 @@ public class App {
                 totalTeachers += subject.getTeacherCount();
             }
         }
-        
-        System.out.println("---------------------------------------------------");
-        
-        if (totalTeachers > 0) {
-            double overallAverage = totalRatingSum / totalTeachers;
-            char overallGrade = getGradeFromAverage(overallAverage);
-            System.out.printf("\nOverall System Quality: %.2f (Grade: %c)\n", overallAverage, overallGrade);
-        } else {
-            System.out.println("\nOverall System Quality: No data available");
-        }
-        
+         
         System.out.println("=====================================\n");
     }
     
@@ -169,22 +159,5 @@ public class App {
                 System.out.println("ERROR: Please enter a valid number");
             }
         }
-    }
-    
-    static char getGradeFromAverage(double average) {
-        int score = (int) average;
-        switch (score / 10) {
-            case 10:
-            case 9:
-                return 'A';
-            case 8:
-                return 'B';
-            case 7:
-                return 'C';
-            case 6:
-                return 'D';
-            default:
-                return 'F';
-        }
-    }
+    } 
 }
