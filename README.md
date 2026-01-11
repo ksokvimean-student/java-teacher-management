@@ -1,8 +1,6 @@
 # Teacher Quality Rating System
 ## Developer Documentation
-
----
-
+ 
 ## 1. Project Overview
 
 A console-based Java application that collects teacher quality ratings by subject, calculates average scores, assigns grades, and generates a quality report.
@@ -55,6 +53,26 @@ Display with 2 decimal places.
 | 60-69 | D |
 | 0-59 | F |
 
+```Java
+     static char getGradeFromAverage(double average) {
+        int score = (int) average;
+        switch (score / 10) {
+            case 10:
+            case 9:
+                return 'A';
+            case 8:
+                return 'B';
+            case 7:
+                return 'C';
+            case 6:
+                return 'D';
+            default:
+                return 'F';
+        }
+    }
+```
+
+
 ### 3.3 Overall System Quality
 
 Calculate weighted average across all subjects:
@@ -96,11 +114,91 @@ Overall System Quality: XX.XX (Grade: X)
 ### Teacher Class
 - Properties: name, rating
 - Methods: getName(), getRating()
+```java
+public class Teacher {
+    private String name;
+    private int rating;
+    
+    public Teacher(String name, int rating) {
+        this.name = name;
+        this.rating = rating;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public int getRating() {
+        return rating;
+    }
+ 
+}
 
+```
 ### Subject Class
 - Properties: name, List<Teacher>
 - Methods: addTeacher(), getTeacherCount(), getAverageRating(), getGrade()
+```Java
+public class Subject {
+    private int id;
+   
+    private String name;
+    private List<Teacher> teachers;
+    
+    public Subject(int id,String name) {
+        this.id = id;
+        this.name = name;
+        this.teachers = new ArrayList<>();
+    }
+    
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+    
+    public void addTeacher(Teacher teacher) {
+        teachers.add(teacher);
+    }
+    
+    public int getTeacherCount() {
+        return teachers.size();
+    }
+    
+    public double getAverageRating() {
+        if (teachers.isEmpty()) return 0;
+        int sum = 0;
+        for (Teacher teacher : teachers) {
+            sum += teacher.getRating();
+        }
+        return (double) sum / teachers.size();
+    }
+    
+    public char getGrade() {
+        double avg = getAverageRating();
+        switch ((int) avg / 10) {
+            case 10:
+            case 9:
+                return 'A';
+            case 8:
+                return 'B';
+            case 7:
+                return 'C';
+            case 6:
+                return 'D';
+            default:
+                return 'F';
+        }
+    }
+}
+
+```
 ### Main Class (TeacherQualitySystem)
 - Menu-driven interface
 - Input validation
